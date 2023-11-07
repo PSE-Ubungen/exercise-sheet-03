@@ -6,8 +6,8 @@ import java.io.PrintStream;
 /**
  * Please describe this class here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author LevinKohler DhurimHoxha
+ * @version 1.0
  */
 public final class ExerciseHamsterGame extends InternalExerciseHamsterGame {
 	/**
