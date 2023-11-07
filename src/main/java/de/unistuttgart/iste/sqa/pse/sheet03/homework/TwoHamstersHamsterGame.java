@@ -3,17 +3,42 @@ package de.unistuttgart.iste.sqa.pse.sheet03.homework;
 /**
  * Describe the class TwoHamstersHamsterGame here.
  *
- * @author (Your name)
- * @version (a version number or a date)
+ * @author LevinKohler DhurimHoxha
+ * @version 1.0
  */
 public class TwoHamstersHamsterGame extends InternalTwoHamstersHamsterGame {
 
 	@Override
 	void hamsterRun() {
-		// delete the following lines, once you figured out what the helpers do.
-		controller.pickAllGrains(paula);
-		controller.putAllGrains(paule);
+		
+		controller.doSteps(paule, 2);
+		controller.turnHamster(paule, 3);
 
-		// TODO implement Exercise 2 (b) here
+		
+		for (int i = 0; i < 3; i++) {
+			controller.pickAllGrainsInRow(paule);
+			controller.pickAllGrains(paule);
+			controller.turnHamster(paule, 3);
+
+			controller.pickAllGrainsInRow(paula);
+			controller.pickAllGrains(paula);
+			controller.turnHamster(paula, 1);
+		}
+		
+		controller.doSteps(paule, 1);
+		controller.doSteps(paula, 1);
+		controller.turnHamster(paule, 3);
+		controller.turnHamster(paula, 1);
+		controller.pickAllGrainsInRow(paule);
+		controller.pickAllGrains(paule);
+		controller.pickAllGrainsInRow(paula);
+		controller.pickAllGrains(paula);
+		controller.turnHamster(paule, 1);
+		controller.turnHamster(paula, 3);
+		controller.doSteps(paule, 2);
+		controller.doSteps(paula, 2);
+		controller.putAllGrains(paule);
+		controller.putAllGrains(paula);
+		
 	}
 }

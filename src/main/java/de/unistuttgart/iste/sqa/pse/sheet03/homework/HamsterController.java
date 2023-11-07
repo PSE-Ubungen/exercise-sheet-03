@@ -52,17 +52,33 @@ public class HamsterController {
 		hamster.write(String.format("I had %d grains in my mouth. I put all of them on my Tile!", counter));
 	}
 
-	// TODO replace this comment with JavaDoc
-	void helper0(Hamster hamster) {
-		hamster.write("Executing helper0:");
+	/*@
+	 @ requires hamster.frontIsClear()
+	 @ ensures 
+	 @*/
+	/**
+	 * The Hamster does moves in half a circle
+	 * 
+	 * @param hamster The hamster that puts the grain.
+	 */ 
+	void moveHalfCircle(Hamster hamster) {
+		hamster.write("Executing moveHalfCircle:");
 		hamster.turnLeft();
 		hamster.move();
 		hamster.turnLeft();
 		hamster.write("I ran a half circle!");
 	}
 
-	// TODO replace this comment with JavaDoc
-	void helper1(Hamster hamster) {
+	/*@
+	 @ requires 
+	 @ ensures 
+	 @*/
+	/**
+	 * The Hamster picks up all Grains while he walks to the next Wall.
+	 * 
+	 * @param hamster The hamster that puts the grain.
+	 */ 
+	void pickAllGrainsInRow(Hamster hamster) {
 		hamster.write("Executing helper1:");
 		while (hamster.frontIsClear()) {
 			pickAllGrains(hamster);
@@ -71,8 +87,17 @@ public class HamsterController {
 		hamster.write("I picked all grains, on the tile behind me!");
 	}
 
-	// TODO replace this comment with JavaDoc
-	void helper2(Hamster hamster, Integer turns) {
+	/*@
+	 @ requires 
+	 @ ensures 
+	 @*/
+	/**
+	 * Turns the Hamster a specific time to the Left Side.
+	 * 
+	 * @param hamster The hamster that puts the grain.
+	 * @param turns The specific amount of turns.
+	 */ 
+	void turnHamster(Hamster hamster, Integer turns) {
 		hamster.write("Executing helper3:");
 		for (Integer i = 0; i < turns; i++) {
 			hamster.turnLeft();
@@ -80,8 +105,18 @@ public class HamsterController {
 		hamster.write(String.format("I turned %d times!", turns));
 	}
 
-	// TODO replace this comment with JavaDoc
-	void helper3(Hamster hamster, Integer steps) {
+	/*@
+	 @ requires 
+	 @ ensures 
+	 @*/
+	/**
+	 * The Hamser moves a specific amount of steps.
+	 * writes how much steps he did out of the given steps.
+	 * 
+	 * @param hamster The hamster that puts the grain.
+	 * @param steps The specific amount of steps.
+	 */ 
+	void doSteps(Hamster hamster, Integer steps) {
 		hamster.write("Executing helper4:");
 		Integer counter = 0;
 		for (; counter < steps && hamster.frontIsClear(); counter++) {
