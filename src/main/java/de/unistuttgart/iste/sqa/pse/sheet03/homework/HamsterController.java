@@ -55,8 +55,7 @@ public class HamsterController {
 	/*@
 	@ requires hamster != null;
 	@ requires hamster.frontIsClear;
-	@ ensures hamster.turnLeft;
-	@ ensures hamster.move;
+	@ ensures true;
 	@*/
 	/**
 	 * The Hamster moves in a half circle.
@@ -73,8 +72,7 @@ public class HamsterController {
 
 	/*@
 	@ requires hamster != null;
-	@ ensures hamster.move;
-	@ ensures hamster.pickAllGrains;
+	@ ensures true;
 	@*/
 	/**
 	 * The Hamster picks up all Grains while he walks to the next Wall.
@@ -92,8 +90,7 @@ public class HamsterController {
 
 	/*@
 	@ requires hamster != null;
-	@ requires turns > 0;
-	@ ensures hamster.turn;
+	@ ensures true;
 	@*/
 	/**
 	 * Turns the Hamster a specific time to the Left Side.
@@ -101,7 +98,7 @@ public class HamsterController {
 	 * @param hamster The hamster that turns a specific time.
 	 * @param turns The specific amount of turns.
 	 */ 
-	void turnHamster(Hamster hamster, Integer turns) {
+	void turnHamsterLeft(Hamster hamster, Integer turns) {
 		hamster.write("Executing turnHamster:");
 		for (Integer i = 0; i < turns; i++) {
 			hamster.turnLeft();
@@ -111,12 +108,10 @@ public class HamsterController {
 
 	/*@
 	@ requires hamster != null;
-	@ requires steps > 0;
-	@ ensures hamster.move;
+	@ ensures true;
 	@*/
 	/**
 	 * The Hamser moves a specific amount of steps while hes not facing a wall.
-	 * And he writes how much steps he did out of the given steps.
 	 * 
 	 * @param hamster The hamster that moves.
 	 * @param steps The specific amount of steps.
