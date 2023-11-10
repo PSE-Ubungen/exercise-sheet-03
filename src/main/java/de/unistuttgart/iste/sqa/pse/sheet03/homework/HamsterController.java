@@ -16,7 +16,7 @@ public class HamsterController {
 
 	/*@
 	@ requires hamster != null;
-	@ ensures !hamster.grainAvailable();
+	@ ensures !hamster.grainAvailable;
 	@*/
 	/**
 	 * Pick all grains on the hamster's tile.
@@ -35,7 +35,7 @@ public class HamsterController {
 
 	/*@
 	@ requires hamster != null;
-	@ ensures hamster.mouthEmpty();
+	@ ensures hamster.mouthEmpty;
 	@*/
 	/**
 	 * Put all of the hamster's grain on the current tile.
@@ -53,13 +53,15 @@ public class HamsterController {
 	}
 
 	/*@
-	 @ requires hamster.frontIsClear()
-	 @ ensures 
-	 @*/
+	@ requires hamster != null;
+	@ requires hamster.frontIsClear;
+	@ ensures hamster.turnLeft;
+	@ ensures hamster.move;
+	@*/
 	/**
-	 * The Hamster does moves in half a circle
+	 * The Hamster moves in a half circle.
 	 * 
-	 * @param hamster The hamster that puts the grain.
+	 * @param hamster The hamster that moves in a half circle.
 	 */ 
 	void moveHalfCircle(Hamster hamster) {
 		hamster.write("Executing moveHalfCircle:");
@@ -70,16 +72,17 @@ public class HamsterController {
 	}
 
 	/*@
-	 @ requires 
-	 @ ensures 
-	 @*/
+	@ requires hamster != null;
+	@ ensures hamster.move;
+	@ ensures hamster.pickAllGrains;
+	@*/
 	/**
 	 * The Hamster picks up all Grains while he walks to the next Wall.
 	 * 
-	 * @param hamster The hamster that puts the grain.
+	 * @param hamster The hamster that pickup the grains and moves.
 	 */ 
 	void pickAllGrainsInRow(Hamster hamster) {
-		hamster.write("Executing helper1:");
+		hamster.write("Executing pickAllGrainsInRow:");
 		while (hamster.frontIsClear()) {
 			pickAllGrains(hamster);
 			hamster.move();
@@ -88,17 +91,18 @@ public class HamsterController {
 	}
 
 	/*@
-	 @ requires 
-	 @ ensures 
-	 @*/
+	@ requires hamster != null;
+	@ requires turns > 0;
+	@ ensures hamster.turn;
+	@*/
 	/**
 	 * Turns the Hamster a specific time to the Left Side.
 	 * 
-	 * @param hamster The hamster that puts the grain.
+	 * @param hamster The hamster that turns a specific time.
 	 * @param turns The specific amount of turns.
 	 */ 
 	void turnHamster(Hamster hamster, Integer turns) {
-		hamster.write("Executing helper3:");
+		hamster.write("Executing turnHamster:");
 		for (Integer i = 0; i < turns; i++) {
 			hamster.turnLeft();
 		}
@@ -106,18 +110,19 @@ public class HamsterController {
 	}
 
 	/*@
-	 @ requires 
-	 @ ensures 
-	 @*/
+	@ requires hamster != null;
+	@ requires steps > 0;
+	@ ensures hamster.move;
+	@*/
 	/**
-	 * The Hamser moves a specific amount of steps.
-	 * writes how much steps he did out of the given steps.
+	 * The Hamser moves a specific amount of steps while hes not facing a wall.
+	 * And he writes how much steps he did out of the given steps.
 	 * 
-	 * @param hamster The hamster that puts the grain.
+	 * @param hamster The hamster that moves.
 	 * @param steps The specific amount of steps.
 	 */ 
 	void doSteps(Hamster hamster, Integer steps) {
-		hamster.write("Executing helper4:");
+		hamster.write("Executing doSteps:");
 		Integer counter = 0;
 		for (; counter < steps && hamster.frontIsClear(); counter++) {
 			hamster.move();
